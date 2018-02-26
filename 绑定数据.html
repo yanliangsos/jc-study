@@ -11,8 +11,13 @@
     <script>
         window.onload = function () {
             var spread = new GC.Spread.Sheets.Workbook(document.getElementById('ss'), { sheetCount: 3 });
-            // get spread object
-            // var spread = GC.Spread.Sheets.findControl(document.getElementById('ss'));
+            // 注意 0 第一个sheet
+            var sheet = spread.getSheet(0)
+            var person = {name:'wang feng', address:{postcode:'39933'}}
+            var source = new GC.Spread.Sheets.Bindings.CellBindingSource(person)
+            sheet.setBindingPath(2,2,'name')
+            sheet.setBindingPath(4,2,'address.postcode')
+            sheet.setDataSource(source)
         };
     </script>
 </body>
